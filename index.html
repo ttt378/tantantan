@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电子校园卡</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航栏 -->
+        <div class="header">
+            <div class="time" id="current-time">19:22</div>
+            <div class="title">e码通</div>
+            <div class="battery">89%</div>
+        </div>
+
+        <!-- 用户信息 -->
+        <div class="profile">
+            <img src="photo.jpg" alt="用户头像" class="avatar">
+            <div class="info">
+                <p>姓名：<span id="name">边*林</span></p>
+                <p>学号：<span id="id">2470091</span></p>
+                <p>学院：机械工程与自动化学院</p>
+            </div>
+        </div>
+
+        <!-- 二维码区域 -->
+        <div class="qr-section">
+            <img src="qrcode.png" alt="二维码" class="qr-code">
+            <p id="current-date-time">2025-03-02 19:22:22</p>
+        </div>
+
+        <!-- 底部横幅 -->
+        <div class="footer">
+            <p>e码通 助力校园 智慧生活</p>
+        </div>
+    </div>
+
+    <script>
+        // 更新当前时间
+        function updateTime() {
+            let now = new Date();
+            let hours = now.getHours().toString().padStart(2, '0');
+            let minutes = now.getMinutes().toString().padStart(2, '0');
+            let seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById("current-time").textContent = hours + ":" + minutes;
+            document.getElementById("current-date-time").textContent = now.getFullYear() + "-" + 
+                (now.getMonth() + 1).toString().padStart(2, '0') + "-" + 
+                now.getDate().toString().padStart(2, '0') + " " + hours + ":" + minutes + ":" + seconds;
+        }
+
+        // 每秒更新一次时间
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+</html>
